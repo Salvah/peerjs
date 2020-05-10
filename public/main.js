@@ -1,8 +1,10 @@
 const local = document.querySelector("video#local");
 const remote = document.querySelector("video#remote");
+const span = document.querySelector("span");
 
 const peer = new Peer({ key: "lwjd5qra8257b9" });
 peer.on("open", function (id) {
+  span.innerHTML = id;
   console.log(`My peer ID is ${id}`);
 });
 
