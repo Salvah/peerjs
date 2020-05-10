@@ -58,14 +58,19 @@ window.addEventListener("load", () => {
   });
 });
 
-const receiveData = (data) => {
-  console.log("Received", data);
+const addMessage = (message) => {
   const li = document.createElement("li");
   const messages = document.querySelector("ul");
-  li.innerHTML = data;
+  li.innerHTML = message;
   messages.appendChild(li);
 };
+
+const receiveData = (data) => {
+  console.log("Received", data);
+  addMessage(data);
+};
 const sendData = (message) => {
+  addMessage(`<b>Você diz: </b>${message}`);
   conn.send(message);
 };
 
