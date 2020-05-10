@@ -40,12 +40,15 @@ window.addEventListener("load", () => {
     destPeerId = text.value;
 
     conn.on("open", () => {
+      console.log("ok");
       remote.setAttribute("muted", true);
       const call = peer.call(destPeerId, localStream);
       call.on("stream", receiveStream);
 
       conn.on("data", receiveData);
     });
+
+    conn.on("error", (err) => console.log(`Erro: ${err}`));
   });
 
   btnSend.addEventListener("click", () => {
